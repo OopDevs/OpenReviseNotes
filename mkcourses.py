@@ -11,7 +11,7 @@ Copyright (C) 2020-present jkelol111
 __author__ = 'jkelol111'
 __copyright__ = 'Copyright (C) 2020-present jkelol111'
 __license__ = 'Public Domain'
-__version__ = '1.0'
+__version__ = '1.0.1'
 
 import os
 import shutil
@@ -99,15 +99,16 @@ class Courses:
                     self.everything[course.name] = {}
                     # Scan for the chapters inside the course.
                     for chapter in os.scandir(os.path.join(self.directory, course.name)):
-                        logging.debug('---Found chapter: ' + chapter.name)
                         # Check if the chapter is a directory or not, or is meant to be non-indexed.
                         if not chapter.name.startswith('.') and chapter.is_dir():
+                            logging.debug('--- Found chapter: ' + chapter.name)
                             # Set up the chapters list
                             self.everything[course.name][chapter.name] = {}
                             # Scan for chapter files of whatever format.
                             for file in os.scandir(os.path.join(self.directory, course.name, chapter)):
                                 # Check if the chapter file is a file or not, or is meant to be non-indexed.
                                 if not file.name.startswith('.') and file.is_file():
+                                    logging.debug('------ Found file: ' + file.name)
                                     # Get the extension of the file.
                                     file_extension = os.path.splitext(file.name)[1].split('.')[1]
                                     # Fix for KeyError, creates an empty array for file type if not present yet.
@@ -190,14 +191,17 @@ class Courses:
         -------
         None
         '''
-        def task_write_courses():
-            with open(os.path.join(self.directory, 'courses.json'), 'w') as courses:
-                json.dump(self.everything, courses)
-        # Check if the function is to be executed under a new thread (useful for GUI apps).
-        if threaded:
-            self.start_thread(task_write_courses)
-        elif not threaded:
-            task_write_courses()
+        if not self.dryrun:
+            def task_write_courses():
+                with open(os.path.join(self.directory, 'courses.json'), 'w') as courses:
+                    json.dump(self.everything, courses)
+            # Check if the function is to be executed under a new thread (useful for GUI apps).
+            if threaded:
+                self.start_thread(task_write_courses)
+            elif not threaded:
+                task_write_courses()
+        else:
+            logging.warning('Dry-run enabled, not writing to disk.')
 
 
 # Run only if the file isn't imported
@@ -256,8 +260,8 @@ if __name__ == '__main__':
             logging.info('0/x: Scanning notes/ directory...')
             SCANNER = Courses(os.path.join(os.getcwd(), 'notes'), CMD_PARSED.dryrun)
     if CMD_PARSED.command == 'generate':
-        logging.info('1/2: Compiling the JSON...')
-        print('\n')
+        print('')
+        logging.info('1/2: Compiling the JSON...\n')
         if CMD_PARSED.forced_directory is not None:
             logging.info('2/2: Writing {0}/courses.json...'.format(CMD_PARSED.forced_directory))
         else:
@@ -267,4 +271,5 @@ if __name__ == '__main__':
         print()
         logging.info('1/1: Listing courses and associated files...')
         pprint.pprint(SCANNER.everything)
-    print('\n\nAll done!')
+    print('')
+    logging.info('All done!')
