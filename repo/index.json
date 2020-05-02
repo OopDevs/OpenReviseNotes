@@ -1,6 +1,7 @@
 {
     "OpenReviseRepo": {
         "meta": {
+            "name": "OpenRevise2 Official Notes Repository",
             "owners": {
                 "jkelol111 (Nam)": {
                     "GitHub": "https://github.com/jkelol111"
@@ -8,12 +9,11 @@
                 "openMengZe (Meng Ze)": {
                     "GitHub": "https://github.com/openMengZe"
                 }
-            },
-            "url": "https://openstudysystems.github.io/OpenReviseNotes"
+            }
         },
         "db": {
             "schema": 1,
-            "path": "/notes/courses.json"
+            "path": "/notes/"
         }
     }
 }
