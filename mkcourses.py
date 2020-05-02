@@ -193,7 +193,7 @@ class Courses:
         '''
         if not self.dryrun:
             def task_write_courses():
-                with open(os.path.join(self.directory, 'courses.json'), 'w') as courses:
+                with open(os.path.join(self.directory, 'index.json'), 'w') as courses:
                     json.dump(self.everything, courses)
             # Check if the function is to be executed under a new thread (useful for GUI apps).
             if threaded:
