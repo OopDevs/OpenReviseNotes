@@ -263,9 +263,9 @@ if __name__ == '__main__':
         print('')
         logging.info('1/2: Compiling the JSON...\n')
         if CMD_PARSED.forced_directory is not None:
-            logging.info('2/2: Writing {0}/courses.json...'.format(CMD_PARSED.forced_directory))
+            logging.info('2/2: Writing {0}/index.json...'.format(CMD_PARSED.forced_directory))
         else:
-            logging.info('2/2: Writing notes/courses.json...')
+            logging.info('2/2: Writing notes/index.json...')
         SCANNER.write_courses()
     elif CMD_PARSED.command == 'list':
         print()
