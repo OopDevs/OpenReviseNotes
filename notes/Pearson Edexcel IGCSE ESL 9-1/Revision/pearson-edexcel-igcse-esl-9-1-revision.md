@@ -1,19 +1,5 @@
 # English As a Second Language - Revision
 
-> Hi Nina.  
->
-> I know you are quite upset these days due to a small failure in the January IGCSE ESL Exam, so I made this webpage for you to have some good revisions and be prepared for the next exam in May. I will keep uploading notes & sample writings for you to have an overall idea of what you should write in the exam and hopefully these will be helpful someways. 
->
-> I do believe that failure is the best lesson for future success so **please don't be sad. **You still have 3 months to revise which is more than enough so I am sure you will get a wonderful grade in May. 
->
-> You can always ask for help via WeChat or email, anytime and anything you want.
->
-> Best regards, 
->
-> MengZe
-
----
-
 ## ESL - Writing 
 
 ### Sample 1
