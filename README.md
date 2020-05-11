@@ -6,7 +6,7 @@
 
 ## Copyright Claims
 
-> - All contents in this repository belong to [Open Study System](<https://github.com/OpenStudySystems>).
+> - All contents in this repository belong to [Open Study System](<https://github.com/OopDevs>).
 > - Original authors: [MengZe](https://github.com/openMengZe) & [Nam](https://github.com/jkelol111)
 > - Please let us know if you found any mistakes/unclear information - most welcomed.
 > - Feel free to use, download and share any files from this repository.
